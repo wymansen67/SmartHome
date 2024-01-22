@@ -79,7 +79,7 @@ namespace SmartHome.Views
 
                 using (HttpClient client = new())
                 {
-                    var response = await client.GetAsync(baseUrl + $"Room/Coditioner/SetTemperature/{id}");
+                    var response = await client.PostAsync(baseUrl + $"Room/Coditioner/SetTemperature/{id}", null);
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Обновлено.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
