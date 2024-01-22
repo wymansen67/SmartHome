@@ -1,0 +1,52 @@
+﻿<Window x:Class="SmartHome.Views.TvWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartHome.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Background="{DynamicResource MaterialDesignDarkBackground}"
+        TextElement.Foreground="{DynamicResource MaterialDesignDarkForeground}"
+        TextElement.FontFamily="{DynamicResource MaterialDesignFont}"
+        TextElement.FontSize="16"
+        TextElement.FontWeight="Light"
+        ResizeMode="NoResize"
+        Loaded="loadTvStatus"
+        Title="TvWindow" Height="500" Width="600">
+    <DockPanel Margin="5">
+        <TextBlock Text="Tv" DockPanel.Dock="Top" Style="{DynamicResource MaterialDesignHeadline3TextBlock}"/>
+        <Grid Margin="10" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Channel:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBox Name="channelTextBox" PreviewTextInput="numericValidationTextBox" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="0 0 60 0"/>
+            <Button Content="Change" Grid.Column="2" Grid.Row="0" Click="updateChannel"/>
+            <TextBlock Text="Volume:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <TextBox Name="volumeTextBox" PreviewTextInput="numericValidationTextBox" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 60 0"/>
+            <Button Content="Change" Grid.Column="2" Grid.Row="1" Click="updateVolume"/>
+            <TextBlock Text="Status:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+            <ComboBox Name="statusComboBox" Grid.Column="1" Grid.Row="2" Margin="0 0 60 0"/>
+            <Button Content="Change" Grid.Column="2" Grid.Row="2" Click="updateStatus"/>
+        </Grid>
+        <TextBlock Text="Current status" Style="{DynamicResource MaterialDesignBody1TextBlock}" DockPanel.Dock="Top"/>
+        <TextBlock DockPanel.Dock="Top">
+     Channel: <Run Text="{Binding Channel, Mode=OneWay}" />
+        </TextBlock>
+        <TextBlock DockPanel.Dock="Top">
+     Volume: <Run Text="{Binding Volume, Mode=OneWay}" />
+        </TextBlock>
+        <TextBlock DockPanel.Dock="Top">
+     Status: <Run Text="{Binding OnString, Mode=OneWay}" />
+        </TextBlock>
+        <Button Content="Back" Click="Exit" Width="200"/>
+    </DockPanel>
+</Window>
