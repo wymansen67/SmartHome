@@ -127,7 +127,7 @@ namespace SmartHome.Views
 
                 using (HttpClient client = new())
                 {
-                    var response = await client.PatchAsync(baseUrl + $"Room/TV/Volume/{id}", null);
+                    var response = await client.PostAsync(baseUrl + $"Room/TV/Volume/{id}", null);
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Обновлено.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
